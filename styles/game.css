@@ -21,3 +21,9 @@
 .choice-text {
     padding: 1.5rem;
 }
+.correct {
+    background-color: rgba(134, 235, 125, 0.801);
+}
+.incorrect {
+    background-color: tomato;
+}

@@ -52,7 +52,6 @@ startGame = () => {
     questionsCounter = 0;
     score = 0;
     availableQuestions = [... questions];
-    console.log(availableQuestions);
     getNewQuestion();
 };
 
@@ -62,7 +61,7 @@ getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionsCounter >= MAX_QUESTIONS){
         /*go to the end page*/
         return window.location.assign("/end.html")
-    }
+    };
     questionsCounter++;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
@@ -81,18 +80,20 @@ getNewQuestion = () => {
 choices.forEach(choice => {
     choice.addEventListener("click", e => {
         if(!acceptingAnswers) return;
-        acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
 
-
-        console.log(selectedAnswer == currentQuestion.answer);
-        getNewQuestion();
+        const classToAplly = 
+            selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+        
+       selectedChoice.parentElement.classList.add(classToAplly);
+        setTimeout( () => {
+            selectedChoice.parentElement.classList.remove(classToAplly);
+            getNewQuestion();
+        }, 1000)
     });
 });
 
 
 
 startGame ();
-
-console.log (startGame)
