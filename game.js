@@ -94,3 +94,5 @@ choices.forEach(choice => {
 
 
 startGame ();
+
+console.log (startGame)
