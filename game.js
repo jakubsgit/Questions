@@ -63,13 +63,14 @@ startGame = () => {
 getNewQuestion = () => {
 
     if (availableQuestions.length === 0 || questionsCounter >= MAX_QUESTIONS){
+        localStorage.setItem("mostRecentScore", score);
         /*go to the end page*/
         return window.location.assign("/end.html")
     };
+
     questionsCounter++;
     progressText.innerText = "Question " + questionsCounter + "/" + MAX_QUESTIONS;
     let progressBarStyle = ((questionsCounter/MAX_QUESTIONS)* 100)+ '%';
-    console.log((questionsCounter/MAX_QUESTIONS)* 100);
     progressBarFull.style.width = progressBarStyle;
 
 
